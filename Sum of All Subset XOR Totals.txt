@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int sum = 0;
+    int subsetXORSum(vector<int>& nums) {
+        sub(nums, 0, 0);
+        return sum;
+    }
+    void sub(vector<int>& nums, int pos, int n){
+        sum += n;
+        for(int i = pos; i < nums.size(); i++) {
+            n ^= nums[i];
+            sub(nums, i + 1, n); 
+            n ^= nums[i];
+        }
+    }
+};
